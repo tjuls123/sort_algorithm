@@ -168,6 +168,19 @@ def radix_sort(nums, radix=10):
     return nums
 
 
+def shell_sort(nums):
+    n = len(nums)
+    gap = n // 2
+    while gap > 0:
+        for index in range(gap, n):
+            while index >= gap and nums[index] < nums[index - gap]:
+                nums[index], nums[index - gap] = nums[index - gap], nums[index]
+                index -= gap
+
+        gap = gap // 2
+    return nums
+
+
 num_list = [-10, -4, -5, -122, 4, 26, 33, 56, 2, 36, 1, 56, 7, 12, 35]
 print('insert_sort: ', insert_sort(num_list))
 print('select_sort: ', select_sort(num_list))
@@ -179,3 +192,4 @@ print('heap_sort: ', heap_sort(num_list))
 print('count_sort: ', count_sort(num_list))
 print('bucket_sort: ', bucket_sort(num_list))
 print('radix_sort: ', radix_sort(num_list, 10))
+print('shell_sort: ', shell_sort(num_list))
